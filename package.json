@@ -14,7 +14,6 @@
 		"build:all": "npm run build && npm run build:types",
 		"rewriter:build": "cd rewriter/wasm/ && bash build.sh && cd ../../",
 		"dev": "node server.js",
-		"start": "node server.js",
 		"dev:debug": "DEBUG=1 node server.js",
 		"prepack": "RELEASE=1 npm run rewriter:build && npm run build:all",
 		"pub": "npm publish --no-git-checks --access public",
@@ -30,7 +29,8 @@
 		"preinstall": "npx only-allow pnpm",
 		"docs": "typedoc",
 		"docs:dev": "typedoc --options typedoc.dev-facing.json",
-		"docs:serve": "npx serve _docs; typedoc --watch"
+		"docs:serve": "npx serve _docs; typedoc --watch",
+		"start": "node server.js"
 	},
 	"exports": {
 		".": {
@@ -120,5 +120,10 @@
 		"idb": "^8.0.3",
 		"parse-domain": "^8.2.2",
 		"set-cookie-parser": "^2.7.1"
+	},
+	"pnpm": {
+		"overrides": {
+			"entities@4.5.0": "6.0.1"
+		}
 	}
 }
